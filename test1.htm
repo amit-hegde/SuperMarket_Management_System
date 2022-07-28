@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-image: url("https://media.istockphoto.com/photos/shopping-cart-view-in-supermarket-aisle-with-product-shelves-abstract-picture-id838816102?k=6&m=838816102&s=612x612&w=0&h=uPCuplmaLnfDesOl422jsccqTHwDvnAh5L0ydxa3HRA=");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            
+        }
+        .div1{
+            height: 70px;
+            border: solid;
+            background-color: dimgrey;
+        }
+        .div3{
+            margin-top: 15px;
+            padding: 5px;
+            border: solid rgba(93, 93, 93, 0.986);;       
+            display: flex;
+            padding-left: 40px;
+            border-radius: 10px;
+            background-color: rgba(190, 190, 190, 0.801);
+        }
+        input{
+            border-radius: 5px;
+            margin: 20px;
+            width: 250px;
+            height: 20px;
+        }
+        .btn1{
+            margin-left: -20px;
+            border-radius: 500px;
+            width: 42px;
+            height:20px ;
+            font-size: x-small;
+          margin-right: 20px;
+        }
+
+        .div4{
+            margin-top: 3px;
+            padding: 5px;
+            border: solid rgb(131, 130, 130);      
+            display: flex;
+            height: 385px;
+            
+            border-radius: 10px;
+            background-color: rgba(200, 200, 200, 0.801);
+        }
+        .btn2{
+            width: 65px;
+            height: 30px;
+            margin-top: -90px;
+
+
+        }
+        .div5{
+            margin-top: 60px;
+            margin-left:-660px ;
+            height: 295px;
+            width: 1000px;
+            border: solid 1px;
+           
+        }
+        .div6{
+            height: 285px;
+            width: 1000px;
+            overflow: scroll;
+        }
+        table{
+            width: 980px;
+            text-align: center;
+            border-collapse: collapse;
+            border: 1px solid black;
+            border-radius: 5px;
+           
+        }
+        td, th {
+          
+            border: 1px solid black;
+            padding: 3px;
+          }
+          .div7{
+              margin-top: 150px;
+              margin-left: 20px;
+          }
+          .div7>form>input{
+              width: 70px;
+              border-radius: 0;
+              margin: 5px;
+          }
+        .btn3{
+              margin: 10px;
+              width: 80px;
+              height: 25px;
+              margin-left: 30px;
+          }
+          .div8{
+              border-bottom:5px gray groove;
+              position: relative;
+              width: 700px;
+              z-index: 8;
+              height: 29px;
+              margin-top: -1px;
+              margin-left: 100px;
+          }
+          .btn4{
+              border: solid darkslategrey 3px;
+              border-bottom: none;
+              margin-left: 60px;
+              height: 45px;
+              width: 100px;
+              
+              margin-top: -50px;
+          }
+          .btn4:hover{
+              background-color: dimgray;
+          }
+          .div9{
+              position: relative;
+              z-index: 9;
+              background-color: rgba(199, 199, 199, 0.931);
+              border: solid 1px;
+              width: 800px;
+              height: 60px;
+              margin-top: -60px;
+              display: none;
+              padding: 0;
+            }
+            .btn5{margin-left: 20px;}
+            .log>button{top: 35px;
+                right: 30px;
+                background-color: rgb(161, 152, 152);
+                color: rgb(146, 62, 62);
+                border: solid rgb(130, 131, 130) 3px;
+            position:absolute;
+        z-index: 10;}
+    </style>
+</head>
+<body>
+    <div class="div1"><center><h1>BILLING</h1></center><form action="index" method="POST" class="log"><button type="submit" >Logout</button></form> </div>
+    
+    <div class="div3">
+        <form action="bill" method="post">
+           <script>
+            
+               let val=[[1,1,1],[1,3,4,5,4,5]]
+               let a=val[0]
+               let p=val[1]
+               let v=val.slice(2)
+               
+         document.write('<lable>Bill-ID:</lable><input type="text" name="billid" id="billid" value="'+a[0]+'" readonly>')
+       
+        document.write(' <lable>phno:</lable><input type="text" name="custid" id="custid" placeholder="Enter Customer phno" value="'+a[1]+'" required>') </script> 
+         <button type="submit" class="btn1">search</button>
+         
+         
+        </form> <script>
+        document.write('<lable style="margin-top: 25px;">Name:</lable><input type="text" name="cutname" id="custname" value='+a[2]+' readonly>') 
+        document.write('<h2 style="margin-left:30px;">'+a[3]+'</h2>')    
+    </script> 
+         
+    </div>
+    <div class="div4">
+     <form action="bill" method="post">
+        <input type="text" name="itmid" id="itmid" placeholder="Enter itemid" required>
+        <input type="text" name="Qnty" id="Qnty"  placeholder="Enter Qnty else 1">
+        <button type="submit" class="btn2" name="status" value="3">ADD</button>  </form>
+       <br>
+       <div class="div5">
+       <table>
+           <tr>
+               <th>Item ID</th>
+               <th>ITEM Name</th>
+               <th>Qnty</th>
+               <th>Price</th>
+           </tr>
+        </table>
+           <div class="div6">
+            <table> 
+           <script>
+                
+                   for(i in v){
+                    document.write("<tr>")
+                     
+                        document.write("<td style='width:241px;'>"+v[i][0]+"</td><td style='width:377px;'>"+v[i][1]+"</td><td style='width:163px;'>"+v[i][2]+"</td><td>"+v[i][3]+"</td>")
+                       
+                       document.write("</tr>")
+                   } 
+           </script>
+        </table>
+        </div>
+       </div>
+       <div class="div7">
+        <form action="generate" method="POST">
+           <script>
+            document.write('<lable>Sub Total:</lable> <input type="text" name="subtotal" value='+p[0]+' readonly style="width:120px"><br>')
+            document.write('<lable>SGST:</lable><input type="text" name="SGST" value='+p[1]+' readonly>')
+            document.write('<lable>CGST:</lable> <input type="text" name="CGST" value='+p[2]+' readonly><br>')
+            document.write('<lable>Items:</lable> <input type="text" name="Items" value='+p[3]+' readonly>')
+            document.write('<lable>Qnty: </lable> <input type="text" name="Qnty" value='+p[4]+' readonly ><br><br>')
+            document.write('<lable>Total:</lable> <input type="text" name="Total" value='+p[5]+' readonly style="width:120px"><br>')
+           </script>
+                  
+           <button type="submit" class="btn3" name="status" value="1">Generate</button></form>
+    
+       </div>
+    </div>
+    <div class="div8">
+          <form action="bill" method="post">   
+           <button type="submit" class="btn4" name="status" value="1" formaction="newcust">Create User</button>
+            <button type="button" class="btn4" onclick="del()">Delete Item</button>
+            <button type="submit" class="btn4" name="status" value="2">New Bill</button>
+            <button type="submit" class="btn4" name="status" value="2">cancel</button>
+        </form>
+    </div>
+    <div class="div9" id="del1">
+            <form action="bill" method="post">
+        <input type="text" name="itmid" id="itmid" placeholder="Enter itemid">
+       
+        <button type="submit" class="btn5" name="status" value="4">Remove</button><button type="button" class="btn5" onclick="del2()">caccel</button>  </form>
+        <script>function del(){
+            document.getElementById("del1").style.display="block"
+   }
+   function del2(){
+    document.getElementById("del1").style.display="None"
+    }
+   </script>
+    </div>
+
+</body>
+</html>

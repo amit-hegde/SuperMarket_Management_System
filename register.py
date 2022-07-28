@@ -1,0 +1,282 @@
+from sqlite3 import connect
+import cherrypy
+cherrypy.config.update({'server.socket_port': 9999})
+
+class test:                       
+  @cherrypy.expose() 
+  def register(self,aadhar=None,name=None,gender=None,mode=None,dob=None,phno=None,email=None,desig=None,status=0):
+        conn = connect('bill.db')
+        cur = conn.cursor()
+        x=0
+        if phno is not None:
+             sql='INSERT or IGNORE into register VALUES('+str(phno)+',"'+str(name)+'","'+str(email)+'","'+str(aadhar)+'","'+str(gender)+'","'+str(dob)+'","'+str(desig)+'");'  
+             print(sql)
+             cur.execute(sql)
+             conn.commit()
+             sql='INSERT or IGNORE into login VALUES('+str(phno)+',"'+str(desig)+'","'+str(mode)+'",Null);'  
+             print(sql)
+             cur.execute(sql)
+             cur = conn.cursor()
+             conn.commit()
+             x=1
+        conn.close()
+        l=[x]
+        return """ 
+<!DOCTYPE html>
+<html>
+<title>SuperMarket</title>
+<style>
+    body {
+        background-image: url(https://i.pinimg.com/originals/b4/f9/f9/b4f9f97ef17f943e969494a3f8e57cfb.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .btn-group button {
+        background-color: rgba(243, 224, 224, 0.849);
+        /* Green background */
+        border: 2px solid rgba(11, 16, 27, 0.931);
+        /* Green border */
+        margin-left: -2px;  
+        margin-top: 20px;
+        
+        color: rgba(0, 0, 0, 0.89);
+        /* White text */
+        padding: 3px 6px;
+        /* Some padding */
+        cursor: pointer;
+        /* Pointer/hand icon */
+        width:150px;
+        height: 35px;
+        font-weight: bold;
+        /* Set a width if needed */
+        display: block;
+        border-top-right-radius:20px ;
+        border-bottom-right-radius:20px
+        /* Make the buttons appear below each other */
+    }
+
+    /* Add a background color on hover */
+    
+    .btn-group button:hover {
+        background-color: rgba(127, 102, 216, 0.795);
+    }
+    
+    .sidenav {
+        height: 400px;
+        width: 165px;
+        position: fixed;
+        z-index: 1;
+        top: 100px;
+        left: 0;
+        background-color: rgba(187, 187, 187, 0.924);
+        border: solid darkslategrey 2px;
+        border-radius:5px;
+        border-left: none;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 10px;
+    }
+    
+
+    
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+    
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+    .divh{
+        height: 70px;
+        border: solid;
+        background-color: dimgrey;
+    }
+    .log>button{top: 35px;
+        right: 30px;
+        background-color: rgb(161, 152, 152);
+        color: rgb(146, 62, 62);
+        border: solid rgb(130, 131, 130) 3px;
+    position:absolute;
+z-index: 10;}
+         
+    input[type=text],
+    select {
+        width: 240px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    input[type=date],
+    select {
+        width: 240px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    input[type=number],
+    select {
+        width: 240px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    .btn5 {
+        width: 130px;
+        background-color: #4caf4f36;
+        color: rgb(109, 24, 24);
+        border-color: #45a049;
+        padding: 14px 20px;
+        margin: 15px 100px;
+    
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .btn5:hover {
+        background-color: #45a049;
+    }
+    
+
+    
+    .div {
+        background-color: rgba(204, 202, 202, 0.87);
+        margin: 10px 220px;
+        border-radius: 10px;
+        width: 900px;
+        height: 450px;
+        padding: 20px;
+    }
+    
+    .div1 {
+        margin: -10px 0;
+        width: 250px;
+        height: 400px;
+        padding: 30px;
+        padding-top: 60px;
+    }
+    
+    .div2 {
+        margin: -460px 0;
+        width: 250px;
+        height: 400px;
+        padding: 30px;
+        float: right;
+    }
+
+    .div8{
+        border-bottom:5px gray groove;
+        position: relative;
+        width: 400px;
+        z-index: 8;
+        height: 29px;
+        margin-top: -5px;
+        margin-left: 500px;
+    }
+    .btn4{
+        border: solid darkslategrey 3px;
+        border-bottom: none;
+        margin-left: 60px;
+        height: 45px;
+        width: 100px;
+        
+        margin-top: -50px;
+    }
+    .btn4:hover{
+        background-color: dimgray;
+    }
+</style>
+
+<body>
+    <script>
+        var v=%s
+        if(v[0]==1){
+        window.alert("Staff created")}</script>
+    <div class="divh"><center><h1>Admin Main</h1></center><form action="index" method="POST" class="log"><button type="submit" >Logout</button></form> </div>
+    <div id="mySidenav" class="sidenav">
+        <div class="btn-group">
+            <button type="submit" formaction="editstaff" style="background-color: darkgrey">Manage Employee</button>
+            <button type="submit" formaction="Stock">Manage Stocks</button>
+            <button type="submit" formaction="Price">Price Management</button>
+            <button type="submit" formaction="billreport">Billing report</button>
+            <button type="submit" formaction="locator">Product Locator</button>
+            <button type="submit" formaction="change details">Other Details</button>
+            <button type="submit" formaction="index">Logout</button>
+        </div>
+    </div> 
+    <div class="div">
+        <form method="post" action="register">
+            <div class="div1">
+                <label for="adhno">Adhaar number</label>
+                <input type="number" id="adhno" name="aadhar" placeholder="Your Adhaar card number">
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your name">
+
+                <label for="gender">Sex</label>
+                <select id="gender" name="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Others</option>
+    </select>
+    <label for="mode">Mode</label>
+    <select id="mode" name="mode">
+        <option value="enable">Enable</option>
+        <option value="disable">Disable</option>
+      </select>
+            </div>
+            <div class="div2">
+
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="birthday" name="dob">
+
+                <label for="phno">Phone number</label>
+                <input type="number" id="phno" name="phno" placeholder="Your mobile number">
+
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="example@xyz.com">
+
+                <label for="state">Status</label>
+                <input type="text" id="status" name="desig" readonly value="staff">
+                </select>
+                <button type="submit" class="btn5">ADD </button>
+            </div>
+
+            
+        </form>
+    </div>
+   
+    <div class="div8">
+        <form action="bill" method="post">   
+         <button type="submit" class="btn4" name="status" value="1" formaction="update">Update</button>
+          <button type="submit" class="btn4" name="status" value="2" style="background-color: dimgrey;" formaction="register">ADD</button>
+      </form>
+  </div>
+</body>
+
+</html>
+   """% (str(l))    
+     
+
+#cherrypy.server.socket_host = '0.0.0.0'      
+cherrypy.quickstart(test()) 
+   
+

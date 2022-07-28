@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-image: url(https://wallpapercave.com/wp/wp3152222.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: "Lato", sans-serif;
+        }
+        
+        .btn-group button {
+            background-color: rgba(243, 224, 224, 0.849);
+            /* Green background */
+            border: 2px solid rgba(11, 16, 27, 0.931);
+            /* Green border */
+            margin-left: -2px;  
+            margin-top: 20px;
+            
+            color: rgba(0, 0, 0, 0.89);
+            /* White text */
+            padding: 3px 6px;
+            /* Some padding */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            width:150px;
+            height: 35px;
+            font-weight: bold;
+            /* Set a width if needed */
+            display: block;
+            border-top-right-radius:20px ;
+            border-bottom-right-radius:20px
+            /* Make the buttons appear below each other */
+        }
+
+        /* Add a background color on hover */
+        
+        .btn-group button:hover {
+            background-color: rgba(127, 102, 216, 0.795);
+        }
+        
+        .sidenav {
+            height: 400px;
+            width: 165px;
+            position: fixed;
+            z-index: 1;
+            top: 100px;
+            left: 0;
+            background-color: rgba(187, 187, 187, 0.924);
+            border: solid darkslategrey 2px;
+            border-radius:5px;
+            border-left: none;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 10px;
+        }
+        
+
+        
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+        
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+        .divh{
+            height: 70px;
+            border: solid;
+            background-color: dimgrey;
+        }
+        .log>button{top: 35px;
+            right: 30px;
+            background-color: rgb(161, 152, 152);
+            color: rgb(146, 62, 62);
+            border: solid rgb(130, 131, 130) 3px;
+        position:absolute;
+    z-index: 10;}
+    </style>
+</head>
+
+<body>
+    <div class="divh"><center><h1>Admin Main</h1></center><form action="index" method="POST" class="log"><button type="submit" >Logout</button></form> </div>
+    <div id="mySidenav" class="sidenav">
+        <div class="btn-group">
+            <button type="submit" formaction="editstaff">Manage Employee</button>
+            <button type="submit" formaction="Stock">Manage Stocks</button>
+            <button type="submit" formaction="Price">Price Management</button>
+            <button type="submit" formaction="billreport">Billing report</button>
+            <button type="submit" formaction="locator">Product Locator</button>
+            <button type="submit" formaction="change details">Other Details</button>
+            <button type="submit" formaction="index">Logout</button>
+        </div>
+    </div>
+</body>
+
+</html>
